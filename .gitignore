@@ -32,3 +32,18 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+/ProjectSettings/UnityConnectSettings.asset
+/ProjectSettings/TimeManager.asset
+/ProjectSettings/TagManager.asset
+/ProjectSettings/QualitySettings.asset
+/ProjectSettings/ProjectSettings.asset
+/ProjectSettings/Physics2DSettings.asset
+/ProjectSettings/NetworkManager.asset
+/ProjectSettings/NavMeshAreas.asset
+/ProjectSettings/InputManager.asset
+/ProjectSettings/GraphicsSettings.asset
+/ProjectSettings/EditorSettings.asset
+/ProjectSettings/EditorBuildSettings.asset
+/ProjectSettings/DynamicsManager.asset
+/ProjectSettings/ClusterInputManager.asset
+/ProjectSettings/AudioManager.asset
