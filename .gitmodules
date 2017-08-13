@@ -1,3 +1,6 @@
 [submodule "Assets/Voxels.Core"]
 	path = Assets/Voxels.Core
 	url = https://github.com/Arlorean/Voxels.Core.git
+[submodule "Assets/UnityVertexColors"]
+	path = Assets/UnityVertexColors
+	url = https://github.com/Arlorean/UnityVertexColors.git
