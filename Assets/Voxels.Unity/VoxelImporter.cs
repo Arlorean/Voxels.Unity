@@ -16,17 +16,14 @@ public static class VoxelImporter {
     }
 
     public static void VoxelsToUnity(GameObject go, Mesh mesh, VoxelData voxelData) {
-        // Rotate the .vox model so it's facing the default camera correctly
-        var recenter = Matrix4x4.Translate(new Vector3(voxelData.size.X*0.5f, 0, -voxelData.size.Y*0.5f));
-        var rotZ180 = new Matrix4x4() { m00 = -1, m11 = -1, m22 = 1, m33 = 1, };
-        var rotX270 = new Matrix4x4() { m00 = 1, m12 = -1, m21 = 1, m33 = 1, };
-        var matrix = recenter * rotZ180 * rotX270;
+        // Recenter the .vox model so the bottom is at the origin
+        var matrix = Matrix4x4.Translate(new Vector3(-voxelData.size.X*0.5f, 0, -voxelData.size.Y*0.5f));
 
         // Convert a Voxel mesh to a Unity mesh
         var meshBuilder = new MeshBuilder(voxelData, settings);
         mesh.Clear();
-        mesh.vertices = meshBuilder.Vertices.Select(v => matrix.MultiplyPoint(new Vector3(v.X, v.Y, v.Z))).ToArray();
-        mesh.normals = meshBuilder.Normals.Select(n => matrix.MultiplyVector(new Vector3(n.X, n.Y, n.Z))).ToArray();
+        mesh.vertices = meshBuilder.Vertices.Select(v => matrix.MultiplyPoint(new Vector3(v.X, v.Z, v.Y))).ToArray();
+        mesh.normals = meshBuilder.Normals.Select(n => matrix.MultiplyVector(new Vector3(n.X, n.Z, n.Y))).ToArray();
         mesh.colors32 = meshBuilder.Colors.Select(c => new Color32(c.R, c.G, c.B, c.A)).ToArray();
         mesh.triangles = meshBuilder.Faces.Select(f => (int)f).ToArray();
 
