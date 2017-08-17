@@ -5,7 +5,7 @@ using Voxels;
 
 public class VoxAssetPostprocessor : AssetPostprocessor {
 
-    public static void ImportMagicaVoxelFile(string path) {
+    public static void ImportVoxFile(string path) {
         var dir = Path.GetDirectoryName(path);
         var name = Path.GetFileNameWithoutExtension(path);
 
@@ -42,7 +42,7 @@ public class VoxAssetPostprocessor : AssetPostprocessor {
             GameObject.DestroyImmediate(prefabShadow);
         }
 
-        var voxelData = VoxelImporter.ReadMagicaVoxelFile(path);
+        var voxelData = VoxelImporter.ReadVoxFile(path);
         VoxelImporter.VoxelsToUnity(prefab, mesh, voxelData, new MeshSettings { FrontFaces = true, BackFaces = true });
 
         var shadowObject = prefab.transform.Find("shadow").gameObject;
@@ -62,7 +62,7 @@ public class VoxAssetPostprocessor : AssetPostprocessor {
         foreach (string path in importedAssets) {
             // create an asset using that new import
             if (Path.GetExtension(path) == ".vox") {
-                ImportMagicaVoxelFile(path);
+                ImportVoxFile(path);
             }
 
         }

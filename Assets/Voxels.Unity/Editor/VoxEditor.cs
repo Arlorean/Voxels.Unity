@@ -23,7 +23,7 @@ public class VoxEditor : Editor {
     }
 
     void VoxInspectorGUI(string path) {
-        var voxelData = VoxelImporter.ReadMagicaVoxelFile(path);
+        var voxelData = VoxelImporter.ReadVoxFile(path);
 
         // Read only
         EditorGUILayout.Vector3Field("Size", new Vector3(voxelData.size.X, voxelData.size.Y, voxelData.size.Z));
@@ -32,7 +32,7 @@ public class VoxEditor : Editor {
         // Editable
         GUI.enabled = true;
         if (GUILayout.Button("Create Prefab")) {
-            VoxAssetPostprocessor.ImportMagicaVoxelFile(path);
+            VoxAssetPostprocessor.ImportVoxFile(path);
         }
     }
 }

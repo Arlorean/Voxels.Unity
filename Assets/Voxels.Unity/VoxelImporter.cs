@@ -7,9 +7,9 @@ using Voxels;
 using Color = Voxels.Color;
 
 public static class VoxelImporter {
-    public static VoxelData ReadMagicaVoxelFile(string path) {
+    public static VoxelData ReadVoxFile(string path) {
         using (var stream = File.OpenRead(path)) {
-            return MagicaVoxel.Read(stream);
+            return VoxFile.Read(stream);
         }
     }
 
