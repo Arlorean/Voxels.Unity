@@ -7,11 +7,6 @@ using Voxels;
 using Color = Voxels.Color;
 
 public static class VoxelImporter {
-    public static VoxelData ReadVoxFile(string path) {
-        using (var stream = File.OpenRead(path)) {
-            return VoxFile.Read(stream);
-        }
-    }
 
     public static void VoxelsToUnity(GameObject go, Mesh mesh, VoxelData voxelData, MeshSettings settings) {
         // Recenter the .vox model so the bottom is at the origin
